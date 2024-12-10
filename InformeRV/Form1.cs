@@ -15,13 +15,13 @@ namespace InformeRV
         public Form1()
         {
             InitializeComponent();
+            this.lblFecha.Text =  DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
             this.reportViewer1.RefreshReport();
-            this.reportViewer2.RefreshReport();
         }
     }
 }
