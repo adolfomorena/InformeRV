@@ -60,7 +60,7 @@
             this.reportViewer1.Location = new System.Drawing.Point(-1, 98);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(906, 376);
+            this.reportViewer1.Size = new System.Drawing.Size(906, 442);
             this.reportViewer1.TabIndex = 0;
             // 
             // panel1
@@ -172,7 +172,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(904, 471);
+            this.ClientSize = new System.Drawing.Size(904, 538);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.reportViewer1);
             this.Name = "Form1";
