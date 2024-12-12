@@ -42,9 +42,8 @@
             this.dsBDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsBD = new InformeRV.dsBD();
             this.generosYLibrosTableAdapter = new InformeRV.dsBDTableAdapters.generosYLibrosTableAdapter();
-            this.btnFiltrarAutor = new System.Windows.Forms.Button();
-            this.txtAutor = new System.Windows.Forms.TextBox();
             this.lblAutor = new System.Windows.Forms.Label();
+            this.txtAutor = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoBiblio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosYLibrosBindingSource)).BeginInit();
@@ -67,7 +66,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.panel1.Controls.Add(this.btnFiltrarAutor);
             this.panel1.Controls.Add(this.txtAutor);
             this.panel1.Controls.Add(this.lblAutor);
             this.panel1.Controls.Add(this.btnFiltrar);
@@ -109,7 +107,7 @@
             // 
             this.lblGenero.AutoSize = true;
             this.lblGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGenero.Location = new System.Drawing.Point(367, 14);
+            this.lblGenero.Location = new System.Drawing.Point(434, 23);
             this.lblGenero.Name = "lblGenero";
             this.lblGenero.Size = new System.Drawing.Size(86, 24);
             this.lblGenero.TabIndex = 3;
@@ -118,7 +116,7 @@
             // txtGenero
             // 
             this.txtGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGenero.Location = new System.Drawing.Point(459, 14);
+            this.txtGenero.Location = new System.Drawing.Point(526, 23);
             this.txtGenero.Multiline = true;
             this.txtGenero.Name = "txtGenero";
             this.txtGenero.Size = new System.Drawing.Size(131, 24);
@@ -129,9 +127,9 @@
             this.btnFiltrar.BackColor = System.Drawing.Color.White;
             this.btnFiltrar.FlatAppearance.BorderSize = 0;
             this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrar.Location = new System.Drawing.Point(473, 55);
+            this.btnFiltrar.Location = new System.Drawing.Point(708, 28);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(101, 38);
+            this.btnFiltrar.Size = new System.Drawing.Size(117, 53);
             this.btnFiltrar.TabIndex = 5;
             this.btnFiltrar.Text = "FILTRAR:";
             this.btnFiltrar.UseVisualStyleBackColor = false;
@@ -151,37 +149,24 @@
             // 
             this.generosYLibrosTableAdapter.ClearBeforeFill = true;
             // 
-            // btnFiltrarAutor
-            // 
-            this.btnFiltrarAutor.BackColor = System.Drawing.Color.White;
-            this.btnFiltrarAutor.FlatAppearance.BorderSize = 0;
-            this.btnFiltrarAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFiltrarAutor.Location = new System.Drawing.Point(737, 55);
-            this.btnFiltrarAutor.Name = "btnFiltrarAutor";
-            this.btnFiltrarAutor.Size = new System.Drawing.Size(101, 38);
-            this.btnFiltrarAutor.TabIndex = 8;
-            this.btnFiltrarAutor.Text = "FILTRAR:";
-            this.btnFiltrarAutor.UseVisualStyleBackColor = false;
-            this.btnFiltrarAutor.Click += new System.EventHandler(this.btnFiltrarAutor_Click);
-            // 
-            // txtAutor
-            // 
-            this.txtAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAutor.Location = new System.Drawing.Point(723, 14);
-            this.txtAutor.Multiline = true;
-            this.txtAutor.Name = "txtAutor";
-            this.txtAutor.Size = new System.Drawing.Size(131, 24);
-            this.txtAutor.TabIndex = 7;
-            // 
             // lblAutor
             // 
             this.lblAutor.AutoSize = true;
             this.lblAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAutor.Location = new System.Drawing.Point(631, 14);
+            this.lblAutor.Location = new System.Drawing.Point(434, 64);
             this.lblAutor.Name = "lblAutor";
             this.lblAutor.Size = new System.Drawing.Size(66, 24);
             this.lblAutor.TabIndex = 6;
             this.lblAutor.Text = "Autor:";
+            // 
+            // txtAutor
+            // 
+            this.txtAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutor.Location = new System.Drawing.Point(526, 64);
+            this.txtAutor.Multiline = true;
+            this.txtAutor.Name = "txtAutor";
+            this.txtAutor.Size = new System.Drawing.Size(131, 24);
+            this.txtAutor.TabIndex = 7;
             // 
             // Form1
             // 
@@ -216,7 +201,6 @@
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.TextBox txtGenero;
         private System.Windows.Forms.Label lblGenero;
-        private System.Windows.Forms.Button btnFiltrarAutor;
         private System.Windows.Forms.TextBox txtAutor;
         private System.Windows.Forms.Label lblAutor;
     }

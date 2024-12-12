@@ -4582,7 +4582,7 @@ SELECT Dni, Nombre, Apellidos, Telefono, Email, Foto, Fecha_nacimiento FROM SOCI
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT GENEROS.*, LIBROS.*\r\nFROM     GENEROS INNER JOIN\r\n                  LIBROS" +
@@ -4590,19 +4590,14 @@ SELECT Dni, Nombre, Apellidos, Telefono, Email, Foto, Fecha_nacimiento FROM SOCI
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT GENEROS.*, LIBROS.*\r\nFROM     GENEROS INNER JOIN\r\n                  LIBROS" +
-                " ON GENEROS.Id_genero = LIBROS.Genero\r\nWHERE LOWER(GENEROS.Autor) LIKE LOWER( { " +
-                "fn CONCAT(@Param1, \'%\') })";
-            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param1", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = @"SELECT GENEROS.Id_genero, GENEROS.Nombre, LIBROS.Id_libro, LIBROS.ISBN, LIBROS.Titulo, LIBROS.Autor, LIBROS.Genero, LIBROS.Ejemplares, LIBROS.Caratula
+            this._commandCollection[1].CommandText = @"SELECT GENEROS.Id_genero, GENEROS.Nombre, LIBROS.Id_libro, LIBROS.ISBN, LIBROS.Titulo, LIBROS.Autor, LIBROS.Genero, LIBROS.Ejemplares, LIBROS.Caratula
 FROM     GENEROS INNER JOIN
                   LIBROS ON GENEROS.Id_genero = LIBROS.Genero
-WHERE  LOWER(GENEROS.Nombre) LIKE LOWER( { fn CONCAT(@Param1, '%') })";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param1", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+WHERE  LOWER(GENEROS.Nombre) LIKE LOWER({ fn CONCAT(@Param1, '%') }) 
+AND LOWER(LIBROS.Autor) LIKE LOWER({ fn CONCAT(@Param2,'%') })";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param1", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Param2", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4633,13 +4628,19 @@ WHERE  LOWER(GENEROS.Nombre) LIKE LOWER( { fn CONCAT(@Param1, '%') })";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByAutor(dsBD.generosYLibrosDataTable dataTable, string Param1) {
+        public virtual int FillByGenAutor(dsBD.generosYLibrosDataTable dataTable, string Param1, string Param2) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((Param1 == null)) {
                 throw new global::System.ArgumentNullException("Param1");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+            }
+            if ((Param2 == null)) {
+                throw new global::System.ArgumentNullException("Param2");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Param2));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4652,7 +4653,7 @@ WHERE  LOWER(GENEROS.Nombre) LIKE LOWER( { fn CONCAT(@Param1, '%') })";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual dsBD.generosYLibrosDataTable GetDataByAutor(string Param1) {
+        public virtual dsBD.generosYLibrosDataTable GetDataByGenAutor(string Param1, string Param2) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((Param1 == null)) {
                 throw new global::System.ArgumentNullException("Param1");
@@ -4660,41 +4661,11 @@ WHERE  LOWER(GENEROS.Nombre) LIKE LOWER( { fn CONCAT(@Param1, '%') })";
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
             }
-            dsBD.generosYLibrosDataTable dataTable = new dsBD.generosYLibrosDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByGenero(dsBD.generosYLibrosDataTable dataTable, string Param1) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((Param1 == null)) {
-                throw new global::System.ArgumentNullException("Param1");
+            if ((Param2 == null)) {
+                throw new global::System.ArgumentNullException("Param2");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
-            }
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual dsBD.generosYLibrosDataTable GetDataByGenero(string Param1) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            if ((Param1 == null)) {
-                throw new global::System.ArgumentNullException("Param1");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Param1));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Param2));
             }
             dsBD.generosYLibrosDataTable dataTable = new dsBD.generosYLibrosDataTable();
             this.Adapter.Fill(dataTable);

@@ -28,14 +28,15 @@ namespace InformeRV
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-            this.generosYLibrosTableAdapter.FillByGenero(this.dsBD.generosYLibros, txtGenero.Text);
-            this.reportViewer1.RefreshReport();
-        }
-
-        private void btnFiltrarAutor_Click(object sender, EventArgs e)
-        {
-            this.generosYLibrosTableAdapter.FillByAutor(this.dsBD.generosYLibros, txtAutor.Text);
-            this.reportViewer1.RefreshReport();
+            if ((string.IsNullOrWhiteSpace(txtGenero.Text)) && (string.IsNullOrWhiteSpace(txtAutor.Text))){
+                this.generosYLibrosTableAdapter.Fill(this.dsBD.generosYLibros);
+                this.reportViewer1.RefreshReport();
+            }
+            else
+            {
+                this.generosYLibrosTableAdapter.FillByGenAutor(this.dsBD.generosYLibros, txtGenero.Text, txtAutor.Text);
+                this.reportViewer1.RefreshReport();
+            }
         }
     }
 }
