@@ -35,15 +35,21 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFecha = new System.Windows.Forms.Label();
             this.pbLogoBiblio = new System.Windows.Forms.PictureBox();
-            this.dsBD = new InformeRV.dsBD();
-            this.dsBDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.generosYLibrosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblGenero = new System.Windows.Forms.Label();
+            this.txtGenero = new System.Windows.Forms.TextBox();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.dsBDBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsBD = new InformeRV.dsBD();
             this.generosYLibrosTableAdapter = new InformeRV.dsBDTableAdapters.generosYLibrosTableAdapter();
+            this.btnFiltrarAutor = new System.Windows.Forms.Button();
+            this.txtAutor = new System.Windows.Forms.TextBox();
+            this.lblAutor = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoBiblio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBD)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBDBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosYLibrosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBDBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBD)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
@@ -61,6 +67,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.btnFiltrarAutor);
+            this.panel1.Controls.Add(this.txtAutor);
+            this.panel1.Controls.Add(this.lblAutor);
+            this.panel1.Controls.Add(this.btnFiltrar);
+            this.panel1.Controls.Add(this.txtGenero);
+            this.panel1.Controls.Add(this.lblGenero);
             this.panel1.Controls.Add(this.lblFecha);
             this.panel1.Controls.Add(this.pbLogoBiblio);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
@@ -88,24 +100,88 @@
             this.pbLogoBiblio.TabIndex = 1;
             this.pbLogoBiblio.TabStop = false;
             // 
-            // dsBD
+            // generosYLibrosBindingSource
             // 
-            this.dsBD.DataSetName = "dsBD";
-            this.dsBD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.generosYLibrosBindingSource.DataMember = "generosYLibros";
+            this.generosYLibrosBindingSource.DataSource = this.dsBDBindingSource;
+            // 
+            // lblGenero
+            // 
+            this.lblGenero.AutoSize = true;
+            this.lblGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGenero.Location = new System.Drawing.Point(367, 14);
+            this.lblGenero.Name = "lblGenero";
+            this.lblGenero.Size = new System.Drawing.Size(86, 24);
+            this.lblGenero.TabIndex = 3;
+            this.lblGenero.Text = "Género:";
+            // 
+            // txtGenero
+            // 
+            this.txtGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGenero.Location = new System.Drawing.Point(459, 14);
+            this.txtGenero.Multiline = true;
+            this.txtGenero.Name = "txtGenero";
+            this.txtGenero.Size = new System.Drawing.Size(131, 24);
+            this.txtGenero.TabIndex = 4;
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.BackColor = System.Drawing.Color.White;
+            this.btnFiltrar.FlatAppearance.BorderSize = 0;
+            this.btnFiltrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrar.Location = new System.Drawing.Point(473, 55);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(101, 38);
+            this.btnFiltrar.TabIndex = 5;
+            this.btnFiltrar.Text = "FILTRAR:";
+            this.btnFiltrar.UseVisualStyleBackColor = false;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // dsBDBindingSource
             // 
             this.dsBDBindingSource.DataSource = this.dsBD;
             this.dsBDBindingSource.Position = 0;
             // 
-            // generosYLibrosBindingSource
+            // dsBD
             // 
-            this.generosYLibrosBindingSource.DataMember = "generosYLibros";
-            this.generosYLibrosBindingSource.DataSource = this.dsBDBindingSource;
+            this.dsBD.DataSetName = "dsBD";
+            this.dsBD.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // generosYLibrosTableAdapter
             // 
             this.generosYLibrosTableAdapter.ClearBeforeFill = true;
+            // 
+            // btnFiltrarAutor
+            // 
+            this.btnFiltrarAutor.BackColor = System.Drawing.Color.White;
+            this.btnFiltrarAutor.FlatAppearance.BorderSize = 0;
+            this.btnFiltrarAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFiltrarAutor.Location = new System.Drawing.Point(737, 55);
+            this.btnFiltrarAutor.Name = "btnFiltrarAutor";
+            this.btnFiltrarAutor.Size = new System.Drawing.Size(101, 38);
+            this.btnFiltrarAutor.TabIndex = 8;
+            this.btnFiltrarAutor.Text = "FILTRAR:";
+            this.btnFiltrarAutor.UseVisualStyleBackColor = false;
+            this.btnFiltrarAutor.Click += new System.EventHandler(this.btnFiltrarAutor_Click);
+            // 
+            // txtAutor
+            // 
+            this.txtAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAutor.Location = new System.Drawing.Point(723, 14);
+            this.txtAutor.Multiline = true;
+            this.txtAutor.Name = "txtAutor";
+            this.txtAutor.Size = new System.Drawing.Size(131, 24);
+            this.txtAutor.TabIndex = 7;
+            // 
+            // lblAutor
+            // 
+            this.lblAutor.AutoSize = true;
+            this.lblAutor.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAutor.Location = new System.Drawing.Point(631, 14);
+            this.lblAutor.Name = "lblAutor";
+            this.lblAutor.Size = new System.Drawing.Size(66, 24);
+            this.lblAutor.TabIndex = 6;
+            this.lblAutor.Text = "Autor:";
             // 
             // Form1
             // 
@@ -120,9 +196,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoBiblio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBD)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsBDBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generosYLibrosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBDBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsBD)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -137,6 +213,12 @@
         private System.Windows.Forms.BindingSource dsBDBindingSource;
         private System.Windows.Forms.BindingSource generosYLibrosBindingSource;
         private dsBDTableAdapters.generosYLibrosTableAdapter generosYLibrosTableAdapter;
+        private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.TextBox txtGenero;
+        private System.Windows.Forms.Label lblGenero;
+        private System.Windows.Forms.Button btnFiltrarAutor;
+        private System.Windows.Forms.TextBox txtAutor;
+        private System.Windows.Forms.Label lblAutor;
     }
 }
 

@@ -25,5 +25,17 @@ namespace InformeRV
 
             this.reportViewer1.RefreshReport();
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            this.generosYLibrosTableAdapter.FillByGenero(this.dsBD.generosYLibros, txtGenero.Text);
+            this.reportViewer1.RefreshReport();
+        }
+
+        private void btnFiltrarAutor_Click(object sender, EventArgs e)
+        {
+            this.generosYLibrosTableAdapter.FillByAutor(this.dsBD.generosYLibros, txtAutor.Text);
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
